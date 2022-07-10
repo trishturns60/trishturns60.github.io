@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>Trish Turns 60</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#252424" />
+  <meta name="description" content="Trish Turns 60" />
+  <link rel="shortcut icon" type="image/x-icon" href="./icons/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="jquery/jquery-3.6.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+  <script src="./leaflet-0.7.3-min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+  <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+  <script>
+    var map;
+    var mapLat = -33.9058036;
+    var mapLng = 19.1131168;
+    var mapDefaultZoom = 10;
+
+    function initialize_map() {
+      map = new ol.Map({
+        target: "map",
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM({
+              url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            })
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([mapLng, mapLat]),
+          zoom: mapDefaultZoom
+        })
+      });
+    }
+
+    function add_map_point(lat, lng) {
+      var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          features: [new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
+          })]
+        }),
+        style: new ol.style.Style({
+          image: new ol.style.Icon({
+            anchor: [0.5, 0.5],
+            anchorXUnits: "fraction",
+            anchorYUnits: "fraction",
+            src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+          })
+        })
+      });
+
+      map.addLayer(vectorLayer);
+    }
+
+
+  </script>
+</head>
+
+<body onload="initialize_map(); add_map_point(-33.9058036, 19.1131168);">
+  <header>
+    <div id="header-image">
+      <img id="header-banner-text" src="./images/banner-text-2.png" alt="header-banner">
+    </div>
+    <nav>
+      <div id="homeBut" class="icon" onclick="flip('home', false)">
+        <p class="navText">Agenda</p>
+      </div>
+      <div id="aboutBut" class="icon" onclick="flip('about', false)">
+        <p class="navText">Meet Here</p>
+      </div>
+      <div id="contactBut" class="icon" onclick="flip('contact', false)">
+        <p class="navText">Red Line</p>
+      </div>
+    </nav>
+  </header>
+  <div id="page-content">
+    <div class="pageCont hidden-page" id="home1">
+      <div id="agenda-wrapper" class="pageCont">
+        <div class="home-cont">
+          <div id="home-title">Wine Tram Agenda</div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:15</span>
+            <span class="agenda-item-text">Meet at Franschhoek Terminal</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:30</span>
+            <span class="agenda-item-text">Depart from Franschhoek Terminal</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:40</span>
+            <span class="agenda-item-text">Arrive at Le Lude for an MCC tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">11:53</span>
+            <span class="agenda-item-text">Arrive at Maison for a wine tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">12:53</span>
+            <span class="agenda-item-text">Depart from Maison</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">13:09</span>
+            <span class="agenda-item-text">Arrive at Lynx for lunch and a wine tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">15:09</span>
+            <span class="agenda-item-text">Depart from Lynx</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">15:38</span>
+            <span class="agenda-item-text">Arrive at Grande Provence for a "Tram Tasting"</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">16:38</span>
+            <span class="agenda-item-text">Depart from Grande Provence</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">16:45</span>
+            <span class="agenda-item-text">Arrive at Rickety Bridge for the final tasting!</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">17:45</span>
+            <span class="agenda-item-text">Depart from Rickety Bridge</span>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    <div class="pageCont not-hidden-page" id="home">
+      <div id="meet-here-page-wrapper">
+        <div class="home-cont">
+          <div id="home-title">Wine Tram Agenda</div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:15</span>
+            <span class="agenda-item-text">Meet at Franschhoek Terminal</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:30</span>
+            <span class="agenda-item-text">Depart from Franschhoek Terminal</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">10:40</span>
+            <span class="agenda-item-text">Arrive at Le Lude for an MCC tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">11:53</span>
+            <span class="agenda-item-text">Arrive at Maison for a wine tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">12:53</span>
+            <span class="agenda-item-text">Depart from Maison</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">13:09</span>
+            <span class="agenda-item-text">Arrive at Lynx for lunch and a wine tasting</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">15:09</span>
+            <span class="agenda-item-text">Depart from Lynx</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">15:38</span>
+            <span class="agenda-item-text">Arrive at Grande Provence for a "Tram Tasting"</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">16:38</span>
+            <span class="agenda-item-text">Depart from Grande Provence</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">16:45</span>
+            <span class="agenda-item-text">Arrive at Rickety Bridge for the final tasting!</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-item-time">17:45</span>
+            <span class="agenda-item-text">Depart from Rickety Bridge</span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+    <div class="pageCont hidden-page" id="about">
+      <div id="meet-here-page-wrapper">
+        <div class="about-cont">
+          <div id="home-title">Franschhoek Wine Tram Terminal</div>
+          <div class="address-text">
+            <a class="address-text" target="_blank"
+              href="https://www.google.com/maps/place/Franschhoek+Wine+Tram+-+Official+Site+(Franschhoek+Terminal)/@-33.9058036,19.1109281,17z/data=!3m1!4b1!4m5!3m4!1s0x1dcdbcf4bcdfb865:0xc4f0316cd936494a!8m2!3d-33.9058036!4d19.1131168">
+              Corner of Main Road and Cabriere St, Franschhoek, 7690</a>
+          </div>
+          <div id="map"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    <div class="pageCont hidden-page" id="projects">
+    </div>
+    <div class="pageCont hidden-page" id="contact">
+      <div id="time-table-page-wrapper">
+        <div class="red-line-cont" id="line-links">
+          <div class="red-line-title">Farms we’ll visit:</div>
+
+          <a class="address-text" target="_blank" href="https://lelude.co.za/tastings/">Lu Lude</a>
+
+          <a class="address-text" target="_blank" href="https://www.maisonestate.co.za/restaurant/">Maison</a>
+
+          <a class="address-text" target="_blank" href=" https://www.lynx-collection.com/en/restaurant-2/">Lynx</a>
+
+          <a class="address-text" target="_blank"
+            href="https://www.grandeprovence.co.za/activities/tasting-tours-and-wine-blending/">Grande Provence</a>
+
+          <a class="address-text" target="_blank" href="https://ricketybridge.com/pages/winetastingcentre">Rickety
+            Bridge</a>
+          <span class="red-line-title">Schedule:</span>
+        </div>
+        <div id="time-table-wrapper">
+          <img id="time-table-image" src="./images/time-table-b.png" alt="time-table">
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
