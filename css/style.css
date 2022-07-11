@@ -65,6 +65,9 @@ nav img {
     color: white;
     overflow-y: auto;
 }
+#homeBut{
+    border-bottom: 2px solid #b11226;
+}
 
 #home-title {
     width: 100%;

@@ -26,7 +26,6 @@ var filping = false;
     }
  }
  flip = (Id, back = true) => {
-    console.log('currLoc',currLoc);
     if(filping) return;
     if(Id === currLoc) return;
     filping = true;
