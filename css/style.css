@@ -674,7 +674,7 @@ header {
 #time-table-page-wrapper {
     align-items: center;
     width: 100vw;
-    height: 82%;
+    height: 75%;
 
     overflow-y: auto;
     display: flex;
@@ -685,7 +685,7 @@ header {
     margin: 10px;
     bottom: 0 !important;
     background-color: white;
-    width: 95vw;
+    width: 94%;
 }
 
 #map {
@@ -705,8 +705,12 @@ header {
 }
 
 #time-table-wrapper {
+    display: flex;
     width: 100%;
+    flex-direction: column;
     height: 375px;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (orientation:landscape) {
@@ -741,4 +745,16 @@ header {
     #agenda-wrapper {
         height: 58%;
     }
+}
+.info-text{
+    color: white;
+    text-align: left;
+}
+#account-details{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inline{
+    display: inline;
 }
