@@ -9,6 +9,9 @@ body {
     padding: 0px;
     overflow: hidden;
 }
+.strike-done{
+ text-decoration: line-through;
+}
 
 body>div:focus {
     outline: none !important;
